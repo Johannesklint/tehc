@@ -36,6 +36,24 @@ function App() {
 }
 ```
 
+You have the possibility to read previous state much like `useState` callback function
+
+```jsx
+function Comp() {
+  const [state, dispatch] = useTehc()
+  return (
+    <button
+      onClick={() => {
+        // read previous state
+        dispatch((prev) => prev + 1)
+      }
+    >
+      Click me!
+    </button>
+  )
+}
+```
+
 You can also pass a custom reducer to `TehcProvider`
 
 ```jsx
