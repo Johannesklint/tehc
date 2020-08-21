@@ -1,52 +1,35 @@
 {
   "name": "tehc",
   "version": "1.1.6",
-  "description": "React state management library",
-  "main": "dist/index.js",
-  "source": "src/index.js",
-  "unpkg": "dist/index.umd.js",
+  "description": "React state management",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "state management",
+    "state"
+  ],
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4"
+  },
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
-    "lint": "eslint src/**/**/*.js",
-    "test": "jest"
+    "test": "jest",
+    "build": "./node_modules/.bin/babel src --out-file index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Johannesklint/tehc.git"
   },
-  "keywords": [
-    "react",
-    "state-management",
-    "hooks"
-  ],
   "author": "Johannes Klint",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Johannesklint/tehc/issues"
   },
-  "homepage": "https://github.com/Johannesklint/tehc#readme",
-  "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
-    "@testing-library/react": "^10.0.1",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^25.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^25.1.0",
-    "microbundle": "^0.11.0",
-    "prettier": "^1.19.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  }
+  "homepage": "https://github.com/Johannesklint/tehc#readme"
 }
