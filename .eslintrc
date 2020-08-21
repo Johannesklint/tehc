@@ -1,0 +1,15 @@
+{
+  "extends": ["prettier"],
+  "plugins": [
+    "prettier", "react"
+  ],
+  "rules": {
+    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "error",
+    "prettier/prettier": [
+      "error"
+    ],
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false, "varsIgnorePattern": "React" } ]
+  },
+  "parser": "babel-eslint"
+}

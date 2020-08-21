@@ -2,8 +2,14 @@
   "name": "tehc",
   "version": "1.0.0",
   "description": "React state management library",
-  "main": "src/index.js",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
   "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "lint": "eslint src/**/**/*.js",
     "test": "jest"
   },
   "repository": {
@@ -20,5 +26,28 @@
   "bugs": {
     "url": "https://github.com/Johannesklint/tehc/issues"
   },
-  "homepage": "https://github.com/Johannesklint/tehc#readme"
+  "homepage": "https://github.com/Johannesklint/tehc#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.9",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "jest": "^26.4.1",
+    "microbundle": "^0.12.3",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
 }
