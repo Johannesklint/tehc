@@ -65,7 +65,7 @@ function Counter() {
   const [state, dispatch] = useTehc()
   return (
     <div>
-      <p data-testid="state">{state.count}</p>
+      <p>{state.count}</p>
       <button onClick={() => dispatch({ type: 'increment' })}>increment</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>decrement</button>
     </div>
