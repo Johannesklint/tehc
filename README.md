@@ -89,3 +89,19 @@ function App() {
   )
 }
 ```
+
+If you prefer you can you the HOC
+
+```jsx
+const ComponentHoc = TehcHoc(({ state, dispatch }) => {
+  // use state and dispatch the same as show above
+})
+
+function App() {
+  return (
+    <TehcProvider value={{ state: 'some-state' }}>
+      <ComponentHoc />
+    </TehcProvider>
+  )
+}
+```

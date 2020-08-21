@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import '@testing-library/jest-dom'
 import { cleanup, render, screen, fireEvent } from '@testing-library/react'
-import { TehcProvider, useTehc } from '../'
+import { TehcProvider, useTehc, TehcHoc } from '../'
 
 describe('Tehc', () => {
   afterEach(() => {
@@ -21,7 +21,7 @@ describe('Tehc', () => {
       )
     }
     render(
-      <TehcProvider value={{ state: 'init state' }}>
+      <TehcProvider store={{ state: 'init state' }}>
         <FakeComp />
       </TehcProvider>
     )
@@ -43,7 +43,7 @@ describe('Tehc', () => {
       )
     }
     render(
-      <TehcProvider value={{ state: 'init state' }}>
+      <TehcProvider store={{ state: 'init state' }}>
         <FakeComp />
       </TehcProvider>
     )
@@ -80,7 +80,7 @@ describe('Tehc', () => {
       )
     }
     render(
-      <TehcProvider value={{ state: { count: 0 }, reducer }}>
+      <TehcProvider store={{ state: { count: 0 }, reducer }}>
         <Counter />
       </TehcProvider>
     )
@@ -89,5 +89,27 @@ describe('Tehc', () => {
     expect(screen.getByTestId('state')).toHaveTextContent(1)
     fireEvent.click(screen.getByText('decrement'))
     expect(screen.getByTestId('state')).toHaveTextContent(0)
+  })
+
+  test('with hoc', () => {
+    const Hoc = TehcHoc(({ state, dispatch }) => {
+      return (
+        <div>
+          <p data-testid="state">{state}</p>
+          <button onClick={() => dispatch('updated state')}>
+            Change state
+          </button>
+        </div>
+      )
+    })
+
+    render(
+      <TehcProvider store={{ state: 'some-state' }}>
+        <Hoc />
+      </TehcProvider>
+    )
+    expect(screen.getByTestId('state')).toHaveTextContent('some-state')
+    fireEvent.click(screen.getByRole('button'))
+    expect(screen.getByTestId('state')).toHaveTextContent('updated state')
   })
 })

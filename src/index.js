@@ -2,42 +2,42 @@ import React, { createContext, useContext, useReducer } from 'react'
 
 const TehcContext = createContext(null)
 
-export function TechHoc(Comp) {
+export function TehcHoc(Comp) {
   return () => (
     <TehcContext.Consumer>
       {([state, dispatch]) => {
-        return <Comp state={state} dispatch={dispatch} />
+        return <Comp state={state} dispatch={handleDispatch(state, dispatch)} />
       }}
     </TehcContext.Consumer>
   )
 }
 
-function reducer(_, actions) {
-  switch (actions.type) {
+function reducer(_, action) {
+  switch (action.type) {
     case 'setState':
-      return actions.payload
+      return action.payload
     default:
       throw new Error()
   }
 }
 
-export function TehcProvider({ value, children }) {
-  if (!value) {
+export function TehcProvider({ store, children }) {
+  if (!store) {
     throw new Error(`
-    You need to add a value: 
-      <Tehc value={{ state: "here", reducer: "optional }}>...</Tehc>
+    You need to add a store: 
+      <Tehc store={{ state: "here", reducer: "optional }}>...</Tehc>
     `)
   }
 
-  if (value.state !== 0 && !value.state) {
+  if (store.state !== 0 && !store.state) {
     throw new Error(`
     You need to add state: 
-      <Tehc value={{ state: "goes-here" }}>...</Tehc>
+      <Tehc store={{ state: "goes-here" }}>...</Tehc>
     `)
   }
 
-  const initReducer = value.reducer || reducer
-  const [state, dispatch] = useReducer(initReducer, value.state)
+  const initReducer = store.reducer || reducer
+  const [state, dispatch] = useReducer(initReducer, store.state)
 
   return (
     <TehcContext.Provider value={[state, dispatch]}>
@@ -46,13 +46,8 @@ export function TehcProvider({ value, children }) {
   )
 }
 
-export function useTehc() {
-  const [context, dispatch] = useContext(TehcContext)
-  if (!context) {
-    throw new Error(`Wrap your component inside <TechProvider>…</TechProvider>`)
-  }
-
-  function handleDispatch(args) {
+function handleDispatch(context, dispatch) {
+  return (args) => {
     if (typeof args === 'string') {
       return dispatch({ type: 'setState', payload: args })
     }
@@ -67,5 +62,13 @@ export function useTehc() {
 
     return dispatch({ type: args.type, payload: args.payload })
   }
-  return [context, handleDispatch]
+}
+
+export function useTehc() {
+  const [context, dispatch] = useContext(TehcContext)
+  if (!context) {
+    throw new Error(`Wrap your component inside <TechProvider>…</TechProvider>`)
+  }
+
+  return [context, handleDispatch(context, dispatch)]
 }
