@@ -1,6 +1,6 @@
 {
   "name": "tehc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React state management library",
   "source": "src/index.js",
   "main": "dist/index.js",
