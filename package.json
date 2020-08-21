@@ -1,0 +1,24 @@
+{
+  "name": "tehc",
+  "version": "1.0.0",
+  "description": "React state management library",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johannesklint/tehc.git"
+  },
+  "keywords": [
+    "react",
+    "state-management",
+    "hooks"
+  ],
+  "author": "Johannes Klint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Johannesklint/tehc/issues"
+  },
+  "homepage": "https://github.com/Johannesklint/tehc#readme"
+}
