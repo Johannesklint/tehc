@@ -28,7 +28,7 @@ function Updater() {
 
 function App() {
   return (
-    <TehcProvider value={{ state: 'some-state' }}>
+    <TehcProvider store={{ state: 'some-state' }}>
       <Reader />
       <Updater />
     </TehcProvider>
@@ -83,7 +83,7 @@ function App() {
     }
   }
   return (
-    <TehcProvider value={{ state: { count: 0 }, reducer }}>
+    <TehcProvider store={{ state: { count: 0 }, reducer }}>
       <Counter />
     </TehcProvider>
   )
@@ -99,7 +99,7 @@ const ComponentHoc = TehcHoc(({ state, dispatch }) => {
 
 function App() {
   return (
-    <TehcProvider value={{ state: 'some-state' }}>
+    <TehcProvider store={{ state: 'some-state' }}>
       <ComponentHoc />
     </TehcProvider>
   )
