@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '@testing-library/jest-dom'
 import { cleanup, render, screen, fireEvent } from '@testing-library/react'
 import { TehcProvider, useTehc, TehcHoc } from '../'
