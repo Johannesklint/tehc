@@ -2,7 +2,7 @@
   "name": "tehc",
   "version": "1.2.0",
   "description": "React state management",
-  "main": "index.js",
+  "main": "src/index.js",
   "keywords": [
     "react",
     "state management",
