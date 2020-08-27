@@ -16,7 +16,7 @@ function Reader() {
   // state will be 'some-state' at first render
   // once clicking on the button in `Updater`
   // it will be updated to 'updated-state'
-  return <button onClick={() => dispatch('updated-state')}>{state}</button>
+  return <p>{state}</p>
 }
 
 function Updater() {
