@@ -11,17 +11,17 @@ Another state management library? - Yes, why not? Do we need this library? I thi
 ```jsx
 import { TehcProvider, useTehc } from 'tehc'
 
+// state will be 'some-state' at first render
+// once clicking on the button in `Updater`
+// it will be updated to 'updated-state'
 function Reader() {
   const [state] = useTehc()
-  // state will be 'some-state' at first render
-  // once clicking on the button in `Updater`
-  // it will be updated to 'updated-state'
   return <p>{state}</p>
 }
 
+// first argument is the current state
+// it will change from 'some-state' to 'update-state' on the button click
 function Updater() {
-  // first argument is the current state
-  // it will change from 'some-state' to 'update-state' on the button click
   const [_, dispatch] = useTehc()
   return <button onClick={() => dispatch('updated-state')}>Update</button>
 }
@@ -62,7 +62,7 @@ import { TehcProvider, useTehc } from 'tehc'
 // state.count will be 0 on first render
 // clicking increment and decrement will update state.count to -1 or +1
 function Counter() {
-  const [state, dispatch] = useTehc()
+  const [state, dispatch] = useTehc(0)
   return (
     <div>
       <p>{state.count}</p>
@@ -90,11 +90,16 @@ function App() {
 }
 ```
 
-If you prefer you can you the HOC
+If you prefer use the HOC
 
 ```jsx
 const ComponentHoc = TehcHoc(({ state, dispatch }) => {
-  // use state and dispatch the same as show above
+  return (
+    <div>
+      {state}
+      <button onClick={() => dispatch('Hey!')}>Ok!</button>
+    </div>
+  )
 })
 
 function App() {
